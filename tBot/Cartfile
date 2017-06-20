@@ -1,0 +1,3 @@
+github "SwiftyJSON/SwiftyJSON"
+github "SwiftyBeaver/SwiftyBeaver"
+github "daltoniam/SwiftHTTP" >= 2.0.0
