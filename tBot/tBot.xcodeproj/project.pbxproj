@@ -18,6 +18,7 @@
 		B93897B41EF99F8A00231807 /* SwiftHTTP.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = B93897AD1EF99F7900231807 /* SwiftHTTP.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B93897B51EF99F8A00231807 /* SwiftyBeaver.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = B93897AE1EF99F7900231807 /* SwiftyBeaver.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B93897B61EF99F8A00231807 /* SwiftyJSON.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = B93897AF1EF99F7900231807 /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B93897BA1EF9A03E00231807 /* ClientAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93897B91EF9A03E00231807 /* ClientAPI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,7 @@
 		B93897AD1EF99F7900231807 /* SwiftHTTP.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftHTTP.framework; path = Carthage/Build/iOS/SwiftHTTP.framework; sourceTree = "<group>"; };
 		B93897AE1EF99F7900231807 /* SwiftyBeaver.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyBeaver.framework; path = Carthage/Build/iOS/SwiftyBeaver.framework; sourceTree = "<group>"; };
 		B93897AF1EF99F7900231807 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
+		B93897B91EF9A03E00231807 /* ClientAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientAPI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 		B938978B1EF99E7C00231807 /* tBot */ = {
 			isa = PBXGroup;
 			children = (
+				B93897B81EF9A01F00231807 /* Client */,
 				B93897B71EF99FDD00231807 /* SupportFiles */,
 				B93897901EF99E7C00231807 /* Main.storyboard */,
 			);
@@ -137,6 +140,14 @@
 				B93897981EF99E7C00231807 /* Info.plist */,
 			);
 			name = SupportFiles;
+			sourceTree = "<group>";
+		};
+		B93897B81EF9A01F00231807 /* Client */ = {
+			isa = PBXGroup;
+			children = (
+				B93897B91EF9A03E00231807 /* ClientAPI.swift */,
+			);
+			name = Client;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -246,6 +257,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B938978D1EF99E7C00231807 /* AppDelegate.swift in Sources */,
+				B93897BA1EF9A03E00231807 /* ClientAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
