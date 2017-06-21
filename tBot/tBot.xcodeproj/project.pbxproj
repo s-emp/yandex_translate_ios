@@ -19,6 +19,11 @@
 		B93897B51EF99F8A00231807 /* SwiftyBeaver.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = B93897AE1EF99F7900231807 /* SwiftyBeaver.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B93897B61EF99F8A00231807 /* SwiftyJSON.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = B93897AF1EF99F7900231807 /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B93897BA1EF9A03E00231807 /* ClientAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93897B91EF9A03E00231807 /* ClientAPI.swift */; };
+		B93897BD1EF9A33200231807 /* SwiftHTTP.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = B93897AD1EF99F7900231807 /* SwiftHTTP.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B93897BE1EF9A33200231807 /* SwiftyBeaver.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = B93897AE1EF99F7900231807 /* SwiftyBeaver.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B93897BF1EF9A33200231807 /* SwiftyJSON.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = B93897AF1EF99F7900231807 /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B93897C21EFA5C4400231807 /* Translate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93897C11EFA5C4400231807 /* Translate.swift */; };
+		B93897C41EFA69EC00231807 /* ResponseCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93897C31EFA69EC00231807 /* ResponseCode.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +49,18 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B93897BC1EF9A32600231807 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				B93897BD1EF9A33200231807 /* SwiftHTTP.framework in CopyFiles */,
+				B93897BE1EF9A33200231807 /* SwiftyBeaver.framework in CopyFiles */,
+				B93897BF1EF9A33200231807 /* SwiftyJSON.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +77,8 @@
 		B93897AE1EF99F7900231807 /* SwiftyBeaver.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyBeaver.framework; path = Carthage/Build/iOS/SwiftyBeaver.framework; sourceTree = "<group>"; };
 		B93897AF1EF99F7900231807 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		B93897B91EF9A03E00231807 /* ClientAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientAPI.swift; sourceTree = "<group>"; };
+		B93897C11EFA5C4400231807 /* Translate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Translate.swift; sourceTree = "<group>"; };
+		B93897C31EFA69EC00231807 /* ResponseCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseCode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,9 +164,19 @@
 		B93897B81EF9A01F00231807 /* Client */ = {
 			isa = PBXGroup;
 			children = (
+				B93897C01EFA5C2E00231807 /* Entity */,
 				B93897B91EF9A03E00231807 /* ClientAPI.swift */,
+				B93897C31EFA69EC00231807 /* ResponseCode.swift */,
 			);
 			name = Client;
+			sourceTree = "<group>";
+		};
+		B93897C01EFA5C2E00231807 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				B93897C11EFA5C4400231807 /* Translate.swift */,
+			);
+			name = Entity;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -178,6 +207,7 @@
 				B93897991EF99E7D00231807 /* Sources */,
 				B938979A1EF99E7D00231807 /* Frameworks */,
 				B938979B1EF99E7D00231807 /* Resources */,
+				B93897BC1EF9A32600231807 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -258,6 +288,8 @@
 			files = (
 				B938978D1EF99E7C00231807 /* AppDelegate.swift in Sources */,
 				B93897BA1EF9A03E00231807 /* ClientAPI.swift in Sources */,
+				B93897C21EFA5C4400231807 /* Translate.swift in Sources */,
+				B93897C41EFA69EC00231807 /* ResponseCode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -475,6 +507,7 @@
 				B93897A81EF99E7D00231807 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B93897A91EF99E7D00231807 /* Build configuration list for PBXNativeTarget "tBotTests" */ = {
 			isa = XCConfigurationList;
@@ -483,6 +516,7 @@
 				B93897AB1EF99E7D00231807 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

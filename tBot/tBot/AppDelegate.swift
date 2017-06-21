@@ -15,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         // Установим начальные настройки логирования
         console.format = "$N.$F $L: $M"
-        file.logFileURL = URL(fileURLWithPath: "/tmp/book_audio.log", isDirectory: true)
+        file.logFileURL = URL(fileURLWithPath: "/tmp/translate_ios.log", isDirectory: true)
         log.addDestination(console)
         log.addDestination(file)
         return true

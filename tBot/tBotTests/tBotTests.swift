@@ -11,9 +11,11 @@ import XCTest
 
 class tBotTests: XCTestCase {
     
+    var client: ClientAPI!
+    
     override func setUp() {
         super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        client = ClientAPI()
     }
     
     override func tearDown() {
@@ -21,15 +23,34 @@ class tBotTests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        
-    }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    func testTranslateFromRuToEn() {
+        let exp = expectation(description: "\(#function)\(#line)")
+        client.translate(text: "Привет") { _, translate in
+            XCTAssertTrue(translate?.translate == "Hi")
+            exp.fulfill()
+        }
+        waitForExpectations(timeout: 5) { (error) in
+            if error != nil {
+                XCTAssertTrue(false)
+            }
         }
     }
+    
+    func testTranslateFromEnToRu() {
+        let exp = expectation(description: "\(#function)\(#line)")
+        client.fromLang = "en"
+        client.toLang = "ru"
+        client.translate(text: "Hello") { _, translate in
+            XCTAssertTrue(translate?.translate == "Привет")
+            exp.fulfill()
+        }
+        waitForExpectations(timeout: 5) { (error) in
+            if error != nil {
+                XCTAssertTrue(false)
+            }
+        }
+    }
+    
+    
     
 }
