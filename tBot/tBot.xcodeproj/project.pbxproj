@@ -24,6 +24,12 @@
 		B93897BF1EF9A33200231807 /* SwiftyJSON.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = B93897AF1EF99F7900231807 /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B93897C21EFA5C4400231807 /* Translate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93897C11EFA5C4400231807 /* Translate.swift */; };
 		B93897C41EFA69EC00231807 /* ResponseCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93897C31EFA69EC00231807 /* ResponseCode.swift */; };
+		B93897C81EFAB63C00231807 /* MessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93897C71EFAB63C00231807 /* MessageTableViewCell.swift */; };
+		B93897CB1EFAB68100231807 /* BotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93897CA1EFAB68100231807 /* BotViewController.swift */; };
+		B93897CE1EFAB94300231807 /* TypeMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93897CD1EFAB94300231807 /* TypeMessage.swift */; };
+		B93897D01EFAC09800231807 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93897CF1EFAC09800231807 /* Message.swift */; };
+		B93897D31EFAC34B00231807 /* UIColor+ColorSchema.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93897D21EFAC34B00231807 /* UIColor+ColorSchema.swift */; };
+		B93897D61EFAD80500231807 /* MessageLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93897D51EFAD80500231807 /* MessageLabel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +85,12 @@
 		B93897B91EF9A03E00231807 /* ClientAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientAPI.swift; sourceTree = "<group>"; };
 		B93897C11EFA5C4400231807 /* Translate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Translate.swift; sourceTree = "<group>"; };
 		B93897C31EFA69EC00231807 /* ResponseCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseCode.swift; sourceTree = "<group>"; };
+		B93897C71EFAB63C00231807 /* MessageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageTableViewCell.swift; sourceTree = "<group>"; };
+		B93897CA1EFAB68100231807 /* BotViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BotViewController.swift; sourceTree = "<group>"; };
+		B93897CD1EFAB94300231807 /* TypeMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypeMessage.swift; sourceTree = "<group>"; };
+		B93897CF1EFAC09800231807 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		B93897D21EFAC34B00231807 /* UIColor+ColorSchema.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+ColorSchema.swift"; sourceTree = "<group>"; };
+		B93897D51EFAD80500231807 /* MessageLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageLabel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,9 +136,12 @@
 		B938978B1EF99E7C00231807 /* tBot */ = {
 			isa = PBXGroup;
 			children = (
-				B93897B81EF9A01F00231807 /* Client */,
-				B93897B71EF99FDD00231807 /* SupportFiles */,
 				B93897901EF99E7C00231807 /* Main.storyboard */,
+				B93897D11EFAC0C200231807 /* Models */,
+				B93897B71EF99FDD00231807 /* SupportFiles */,
+				B93897C91EFAB64100231807 /* Views */,
+				B93897CC1EFAB68800231807 /* Controllers */,
+				B93897D41EFAC35000231807 /* Helpers */,
 			);
 			path = tBot;
 			sourceTree = "<group>";
@@ -161,14 +176,14 @@
 			name = SupportFiles;
 			sourceTree = "<group>";
 		};
-		B93897B81EF9A01F00231807 /* Client */ = {
+		B93897B81EF9A01F00231807 /* ClientAPI */ = {
 			isa = PBXGroup;
 			children = (
 				B93897C01EFA5C2E00231807 /* Entity */,
 				B93897B91EF9A03E00231807 /* ClientAPI.swift */,
 				B93897C31EFA69EC00231807 /* ResponseCode.swift */,
 			);
-			name = Client;
+			name = ClientAPI;
 			sourceTree = "<group>";
 		};
 		B93897C01EFA5C2E00231807 /* Entity */ = {
@@ -177,6 +192,41 @@
 				B93897C11EFA5C4400231807 /* Translate.swift */,
 			);
 			name = Entity;
+			sourceTree = "<group>";
+		};
+		B93897C91EFAB64100231807 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B93897C71EFAB63C00231807 /* MessageTableViewCell.swift */,
+				B93897D51EFAD80500231807 /* MessageLabel.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		B93897CC1EFAB68800231807 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B93897CA1EFAB68100231807 /* BotViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		B93897D11EFAC0C200231807 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B93897B81EF9A01F00231807 /* ClientAPI */,
+				B93897CF1EFAC09800231807 /* Message.swift */,
+				B93897CD1EFAB94300231807 /* TypeMessage.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		B93897D41EFAC35000231807 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				B93897D21EFAC34B00231807 /* UIColor+ColorSchema.swift */,
+			);
+			name = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -286,9 +336,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B93897D31EFAC34B00231807 /* UIColor+ColorSchema.swift in Sources */,
 				B938978D1EF99E7C00231807 /* AppDelegate.swift in Sources */,
+				B93897D61EFAD80500231807 /* MessageLabel.swift in Sources */,
+				B93897CE1EFAB94300231807 /* TypeMessage.swift in Sources */,
 				B93897BA1EF9A03E00231807 /* ClientAPI.swift in Sources */,
+				B93897CB1EFAB68100231807 /* BotViewController.swift in Sources */,
 				B93897C21EFA5C4400231807 /* Translate.swift in Sources */,
+				B93897D01EFAC09800231807 /* Message.swift in Sources */,
+				B93897C81EFAB63C00231807 /* MessageTableViewCell.swift in Sources */,
 				B93897C41EFA69EC00231807 /* ResponseCode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
