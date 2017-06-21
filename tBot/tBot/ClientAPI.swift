@@ -3,22 +3,24 @@ import SwiftHTTP
 import SwiftyJSON
 
 class ClientAPI {
-    typealias ResponseAPI = (ResponseCode, Tranlsate?)
+    typealias ResponseTranslate = (ResponseCode, Tranlsate?)
+    typealias ResponseGetListLang = (ResponseCode, [String:String]?)
     
     private let APIKey = "trnsl.1.1.20170411T084541Z.7d7dcebbee0cae59.2dfcbbe761fa05823160d774ccc226a3b2b68fd0"
     private let baseURL = "https://translate.yandex.net/"
     private let translateURL = "api/v1.5/tr.json/translate"
+    private let getListLangURL = "/api/v1.5/tr.json/getLangs"
     
     var fromLang = "ru"
     var toLang = "en"
     
-    func translate(text: String, callback: @escaping (ResponseAPI) -> ()) {
+    func translate(text: String, callback: @escaping (ResponseTranslate) -> ()) {
         let params = ["key": APIKey, "text": text, "lang": "\(fromLang)-\(toLang)"]
         do {
             try HTTP.POST(baseURL + translateURL, parameters: params).start() { response in
                 guard let code = response.statusCode else {
                     log.error("Response code is nil: \(response.description)")
-                    callback(ResponseAPI(ResponseCode.noConnect, nil))
+                    callback(ResponseTranslate(ResponseCode.noConnect, nil))
                     return
                 }
                 switch code {
@@ -26,33 +28,69 @@ class ClientAPI {
                     log.debug("Translate success: \(response.text!)")
                     let translate = Tranlsate(json: JSON(data: response.data))
                     guard translate != nil else {
-                        callback(ResponseAPI(ResponseCode.errorJSON, nil))
+                        callback(ResponseTranslate(ResponseCode.errorJSON, nil))
                         return
                     }
                     switch translate!.code {
                     case 200:
-                        callback(ResponseAPI(ResponseCode.success, translate))
+                        callback(ResponseTranslate(ResponseCode.success, translate))
                     case 401:
-                        callback(ResponseAPI(ResponseCode.notCorrectKey, nil))
+                        callback(ResponseTranslate(ResponseCode.notCorrectKey, nil))
                     case 402:
-                        callback(ResponseAPI(ResponseCode.lockedKey, nil))
+                        callback(ResponseTranslate(ResponseCode.lockedKey, nil))
                     case 404:
-                        callback(ResponseAPI(ResponseCode.limitExceeded, nil))
+                        callback(ResponseTranslate(ResponseCode.limitExceeded, nil))
                     case 422:
-                        callback(ResponseAPI(ResponseCode.canNotTranslate, nil))
+                        callback(ResponseTranslate(ResponseCode.canNotTranslate, nil))
                     case 501:
-                        callback(ResponseAPI(ResponseCode.success, nil))
+                        callback(ResponseTranslate(ResponseCode.success, nil))
                     default:
-                        callback(ResponseAPI(ResponseCode.unknows, nil))
+                        callback(ResponseTranslate(ResponseCode.unknows, nil))
                     }
                 default:
                     log.error("Error other code: \(code)")
-                    callback(ResponseAPI(ResponseCode.unknows, nil))
+                    callback(ResponseTranslate(ResponseCode.unknows, nil))
                 }
             }
         } catch let error {
             log.error(error.localizedDescription)
-            callback(ResponseAPI(ResponseCode.noConnect, nil))
+            callback(ResponseTranslate(ResponseCode.noConnect, nil))
+        }
+    }
+    
+    func getListLang(_ ui: String = "ru", callback: @escaping (ResponseGetListLang) -> ()) {
+        let params = ["ui": ui, "key": APIKey]
+        do {
+            try HTTP.POST(baseURL + getListLangURL, parameters: params).start() { response in
+                guard let code = response.statusCode else {
+                    log.error("Response code is nil: \(response.description)")
+                    callback(ResponseGetListLang(ResponseCode.noConnect, nil))
+                    return
+                }
+                switch code {
+                case 200:
+                    log.debug("Translate success: \(response.text!)")
+                    guard let langs = JSON(data: response.data)["langs"].dictionary else {
+                        callback(ResponseGetListLang(ResponseCode.errorJSON, nil))
+                        return
+                    }
+                    var resultLangs = [String: String]()
+                    for (code, lang) in langs {
+                        resultLangs[code] = lang.string
+                    }
+                    guard !resultLangs.isEmpty else {
+                        callback(ResponseGetListLang(ResponseCode.errorJSON, nil))
+                        return
+                    }
+                    callback(ResponseGetListLang(ResponseCode.success, resultLangs))
+                default:
+                    log.error("Error other code: \(code)")
+                    callback(ResponseGetListLang(ResponseCode.unknows, nil))
+                }
+            }
+        } catch let error {
+            log.error(error.localizedDescription)
+            callback(ResponseGetListLang(ResponseCode.noConnect, nil))
         }
     }
 }

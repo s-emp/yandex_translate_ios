@@ -51,6 +51,22 @@ class tBotTests: XCTestCase {
         }
     }
     
-    
+    func testGetListLang() {
+        let exp = expectation(description: "\(#function)\(#line)")
+        client.getListLang() { _, list in
+            if list != nil {
+                XCTAssertTrue(!(list?.isEmpty)!)
+                exp.fulfill()
+            } else {
+                XCTAssert(false)
+                exp.fulfill()
+            }
+        }
+        waitForExpectations(timeout: 5) { (error) in
+            if error != nil {
+                XCTAssertTrue(false)
+            }
+        }
+    }
     
 }
