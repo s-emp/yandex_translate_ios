@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Bot View Controller-->
+        <!--Item-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="BotViewController" customModule="tBot" customModuleProvider="target" sceneMemberID="viewController">
@@ -36,12 +36,18 @@
                                                         <state key="normal" title="Английский">
                                                             <color key="titleColor" red="0.18823529411764706" green="0.5490196078431373" blue="0.5490196078431373" alpha="1" colorSpace="calibratedRGB"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="touchLang:" destination="BYZ-38-t0r" eventType="touchUpInside" id="apV-Qr-Shh"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KKx-YH-DaH">
                                                         <rect key="frame" x="8" y="32" width="156.5" height="30"/>
                                                         <state key="normal" title="Русский">
                                                             <color key="titleColor" red="0.18823529411764706" green="0.5490196078431373" blue="0.5490196078431373" alpha="1" colorSpace="calibratedRGB"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="touchLang:" destination="BYZ-38-t0r" eventType="touchUpInside" id="a1g-zM-Ljm"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YSu-bb-0Zl">
                                                         <rect key="frame" x="172.5" y="32" width="30" height="30"/>
@@ -74,7 +80,7 @@
                                                 <color key="backgroundColor" red="0.12549019610000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 <color key="sectionIndexBackgroundColor" red="0.12549019610000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 <prototypes>
-                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="messageBot" rowHeight="36" id="dSm-T1-LKM" customClass="MessageBotTableViewCell" customModule="tBot" customModuleProvider="target">
+                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="messageBot" rowHeight="36" id="dSm-T1-LKM" customClass="MessageBotTableViewCell" customModule="tBot" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="28" width="375" height="36"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dSm-T1-LKM" id="bIH-xB-ZGU">
@@ -128,7 +134,7 @@
                                                             <outlet property="messageBot" destination="WFu-ob-jpX" id="hKc-Sr-Vjg"/>
                                                         </connections>
                                                     </tableViewCell>
-                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="messageUser" id="XqO-07-myM" customClass="MessageUserTableViewCell" customModule="tBot" customModuleProvider="target">
+                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="messageUser" id="XqO-07-myM" customClass="MessageUserTableViewCell" customModule="tBot" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="64" width="375" height="37"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XqO-07-myM" id="vpC-Ju-dVS">
@@ -177,7 +183,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2cm-zC-ZoI">
                                                 <rect key="frame" x="0.0" y="620" width="375" height="47"/>
                                                 <subviews>
-                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Привет!" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ICt-Rw-6bd">
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Введите текст" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ICt-Rw-6bd">
                                                         <rect key="frame" x="8" y="9" width="321" height="30"/>
                                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -195,17 +201,27 @@
                                                             <action selector="touchSendMessage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="BLt-Pv-TyC"/>
                                                         </connections>
                                                     </button>
+                                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="scM-Zh-Mp5">
+                                                        <rect key="frame" x="301" y="13" width="20" height="20"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="20" id="Jxi-8W-c8Y"/>
+                                                            <constraint firstAttribute="height" constant="20" id="b0b-iN-1ft"/>
+                                                        </constraints>
+                                                    </activityIndicatorView>
                                                 </subviews>
                                                 <color key="backgroundColor" red="0.16078431369999999" green="0.18039215689999999" blue="0.20392156859999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstItem="op9-GK-lur" firstAttribute="leading" secondItem="ICt-Rw-6bd" secondAttribute="trailing" constant="8" id="6Yq-rr-ELF"/>
                                                     <constraint firstAttribute="trailing" secondItem="op9-GK-lur" secondAttribute="trailing" constant="8" id="9fK-bb-lHv"/>
                                                     <constraint firstItem="op9-GK-lur" firstAttribute="top" secondItem="2cm-zC-ZoI" secondAttribute="top" constant="9" id="DKV-9u-6GB"/>
+                                                    <constraint firstItem="scM-Zh-Mp5" firstAttribute="top" secondItem="2cm-zC-ZoI" secondAttribute="top" constant="13" id="ORD-I6-Ncd"/>
                                                     <constraint firstAttribute="bottom" secondItem="ICt-Rw-6bd" secondAttribute="bottom" constant="8" id="WYo-sA-OEL"/>
+                                                    <constraint firstAttribute="bottom" secondItem="scM-Zh-Mp5" secondAttribute="bottom" constant="14" id="aJ5-sg-OAd"/>
                                                     <constraint firstItem="ICt-Rw-6bd" firstAttribute="top" secondItem="2cm-zC-ZoI" secondAttribute="top" constant="9" id="chd-XG-2T7"/>
                                                     <constraint firstAttribute="bottom" secondItem="op9-GK-lur" secondAttribute="bottom" constant="8" id="klh-MX-d2u"/>
                                                     <constraint firstItem="ICt-Rw-6bd" firstAttribute="leading" secondItem="2cm-zC-ZoI" secondAttribute="leading" constant="8" id="lgP-UC-tCh"/>
                                                     <constraint firstAttribute="height" constant="47" id="lz9-yF-TR7"/>
+                                                    <constraint firstItem="op9-GK-lur" firstAttribute="leading" secondItem="scM-Zh-Mp5" secondAttribute="trailing" constant="16" id="nOw-rG-c3a"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
@@ -243,9 +259,11 @@
                             <constraint firstItem="bbv-eM-pg5" firstAttribute="top" secondItem="PC6-lW-fGI" secondAttribute="bottom" id="quj-yK-rgH"/>
                         </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="iXJ-Z0-UN5"/>
                     <connections>
                         <outlet property="fromLang" destination="KKx-YH-DaH" id="QWv-aV-tUL"/>
                         <outlet property="historyMessage" destination="iG2-1A-dPd" id="51P-xv-zxq"/>
+                        <outlet property="indicatorLoading" destination="scM-Zh-Mp5" id="dxm-K4-aSo"/>
                         <outlet property="message" destination="ICt-Rw-6bd" id="Lu0-v7-PSE"/>
                         <outlet property="scroll" destination="PC6-lW-fGI" id="mrR-Ac-VS0"/>
                         <outlet property="toLang" destination="w1a-f2-Tdb" id="uUX-k2-VoP"/>

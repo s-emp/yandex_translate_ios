@@ -4,7 +4,7 @@ import SwiftyJSON
 
 class ClientAPI {
     typealias ResponseTranslate = (code: ResponseCode, translate: Tranlsate?)
-    typealias ResponseGetListLang = (ResponseCode, [String:String]?)
+    typealias ResponseGetListLang = (code: ResponseCode, list: [Lang]?)
     
     private let APIKey = "trnsl.1.1.20170411T084541Z.7d7dcebbee0cae59.2dfcbbe761fa05823160d774ccc226a3b2b68fd0"
     private let baseURL = "https://translate.yandex.net/"
@@ -69,14 +69,13 @@ class ClientAPI {
                 }
                 switch code {
                 case 200:
-                    log.debug("Translate success: \(response.text!)")
                     guard let langs = JSON(data: response.data)["langs"].dictionary else {
                         callback(ResponseGetListLang(ResponseCode.errorJSON, nil))
                         return
                     }
-                    var resultLangs = [String: String]()
+                    var resultLangs: [Lang] = []
                     for (code, lang) in langs {
-                        resultLangs[code] = lang.string
+                        resultLangs.append(Lang(code, name: lang.string!))
                     }
                     guard !resultLangs.isEmpty else {
                         callback(ResponseGetListLang(ResponseCode.errorJSON, nil))

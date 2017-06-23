@@ -8,16 +8,10 @@ class RealmHelper {
         return dbUI.objects(Message.self)
     }
     
-    static func add(_ obj: Object, callback: @escaping (Bool)->()) {
+    static func add(_ obj: Object) {
         DispatchQueue.main.async {
-            do {
-                try dbUI.write() {
-                    dbUI.add(obj)
-                }
-                callback(true)
-            } catch let error {
-                log.error(error.localizedDescription)
-                callback(false)
+            try! dbUI.write() {
+                dbUI.add(obj)
             }
         }
     }
