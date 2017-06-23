@@ -8,19 +8,22 @@
 
 import UIKit
 
-class MessageTableViewCell: UITableViewCell {
+class MessageBotTableViewCell: UITableViewCell {
     var message: Message? {
         willSet {
             guard newValue != nil else { return }
             switch newValue!.typeMessage {
-            case .bot:
+            case TypeMessage.bot.rawValue:
                 messageBot.text = "\(newValue!.text)"
                 messageBot.layer.backgroundColor = UIColor.csDarkElement.cgColor
                 messageBot.textColor = UIColor.csDarkText
+                messageBot.layer.cornerRadius = 8
                 messageBot.clipsToBounds = true
             default:
-                log.error("В ячейку с сообщением бота, передано сообщение не бота!")
+                log.error("MessageCellBot передано сообщение не от бота")
+                break
             }
+            
         }
     }
 

@@ -24,12 +24,20 @@
 		B93897BF1EF9A33200231807 /* SwiftyJSON.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = B93897AF1EF99F7900231807 /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B93897C21EFA5C4400231807 /* Translate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93897C11EFA5C4400231807 /* Translate.swift */; };
 		B93897C41EFA69EC00231807 /* ResponseCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93897C31EFA69EC00231807 /* ResponseCode.swift */; };
-		B93897C81EFAB63C00231807 /* MessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93897C71EFAB63C00231807 /* MessageTableViewCell.swift */; };
+		B93897C81EFAB63C00231807 /* MessageBotTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93897C71EFAB63C00231807 /* MessageBotTableViewCell.swift */; };
 		B93897CB1EFAB68100231807 /* BotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93897CA1EFAB68100231807 /* BotViewController.swift */; };
 		B93897CE1EFAB94300231807 /* TypeMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93897CD1EFAB94300231807 /* TypeMessage.swift */; };
 		B93897D01EFAC09800231807 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93897CF1EFAC09800231807 /* Message.swift */; };
 		B93897D31EFAC34B00231807 /* UIColor+ColorSchema.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93897D21EFAC34B00231807 /* UIColor+ColorSchema.swift */; };
 		B93897D61EFAD80500231807 /* MessageLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93897D51EFAD80500231807 /* MessageLabel.swift */; };
+		B93897DB1EFBD5ED00231807 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B93897D91EFBD5ED00231807 /* Realm.framework */; };
+		B93897DC1EFBD5ED00231807 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B93897DA1EFBD5ED00231807 /* RealmSwift.framework */; };
+		B93897DD1EFBD5F700231807 /* Realm.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = B93897D91EFBD5ED00231807 /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B93897DE1EFBD5F700231807 /* RealmSwift.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = B93897DA1EFBD5ED00231807 /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B93897E31EFD077000231807 /* RealmHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93897E21EFD077000231807 /* RealmHelper.swift */; };
+		B93897E51EFD14F300231807 /* MessageUserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93897E41EFD14F300231807 /* MessageUserTableViewCell.swift */; };
+		B93897E81EFD418100231807 /* Realm.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = B93897D91EFBD5ED00231807 /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B93897E91EFD418100231807 /* RealmSwift.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = B93897DA1EFBD5ED00231807 /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +57,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				B93897DD1EFBD5F700231807 /* Realm.framework in CopyFiles */,
+				B93897DE1EFBD5F700231807 /* RealmSwift.framework in CopyFiles */,
 				B93897B41EF99F8A00231807 /* SwiftHTTP.framework in CopyFiles */,
 				B93897B51EF99F8A00231807 /* SwiftyBeaver.framework in CopyFiles */,
 				B93897B61EF99F8A00231807 /* SwiftyJSON.framework in CopyFiles */,
@@ -61,6 +71,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				B93897E81EFD418100231807 /* Realm.framework in CopyFiles */,
+				B93897E91EFD418100231807 /* RealmSwift.framework in CopyFiles */,
 				B93897BD1EF9A33200231807 /* SwiftHTTP.framework in CopyFiles */,
 				B93897BE1EF9A33200231807 /* SwiftyBeaver.framework in CopyFiles */,
 				B93897BF1EF9A33200231807 /* SwiftyJSON.framework in CopyFiles */,
@@ -85,12 +97,16 @@
 		B93897B91EF9A03E00231807 /* ClientAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientAPI.swift; sourceTree = "<group>"; };
 		B93897C11EFA5C4400231807 /* Translate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Translate.swift; sourceTree = "<group>"; };
 		B93897C31EFA69EC00231807 /* ResponseCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseCode.swift; sourceTree = "<group>"; };
-		B93897C71EFAB63C00231807 /* MessageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageTableViewCell.swift; sourceTree = "<group>"; };
+		B93897C71EFAB63C00231807 /* MessageBotTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageBotTableViewCell.swift; sourceTree = "<group>"; };
 		B93897CA1EFAB68100231807 /* BotViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BotViewController.swift; sourceTree = "<group>"; };
 		B93897CD1EFAB94300231807 /* TypeMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypeMessage.swift; sourceTree = "<group>"; };
 		B93897CF1EFAC09800231807 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		B93897D21EFAC34B00231807 /* UIColor+ColorSchema.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+ColorSchema.swift"; sourceTree = "<group>"; };
 		B93897D51EFAD80500231807 /* MessageLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageLabel.swift; sourceTree = "<group>"; };
+		B93897D91EFBD5ED00231807 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
+		B93897DA1EFBD5ED00231807 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
+		B93897E21EFD077000231807 /* RealmHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmHelper.swift; sourceTree = "<group>"; };
+		B93897E41EFD14F300231807 /* MessageUserTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageUserTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +114,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B93897DB1EFBD5ED00231807 /* Realm.framework in Frameworks */,
+				B93897DC1EFBD5ED00231807 /* RealmSwift.framework in Frameworks */,
 				B93897B01EF99F7900231807 /* SwiftHTTP.framework in Frameworks */,
 				B93897B11EF99F7900231807 /* SwiftyBeaver.framework in Frameworks */,
 				B93897B21EF99F7900231807 /* SwiftyJSON.framework in Frameworks */,
@@ -158,6 +176,8 @@
 		B93897AC1EF99F7900231807 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B93897D91EFBD5ED00231807 /* Realm.framework */,
+				B93897DA1EFBD5ED00231807 /* RealmSwift.framework */,
 				B93897AD1EF99F7900231807 /* SwiftHTTP.framework */,
 				B93897AE1EF99F7900231807 /* SwiftyBeaver.framework */,
 				B93897AF1EF99F7900231807 /* SwiftyJSON.framework */,
@@ -197,7 +217,8 @@
 		B93897C91EFAB64100231807 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				B93897C71EFAB63C00231807 /* MessageTableViewCell.swift */,
+				B93897E41EFD14F300231807 /* MessageUserTableViewCell.swift */,
+				B93897C71EFAB63C00231807 /* MessageBotTableViewCell.swift */,
 				B93897D51EFAD80500231807 /* MessageLabel.swift */,
 			);
 			name = Views;
@@ -214,9 +235,8 @@
 		B93897D11EFAC0C200231807 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				B93897E11EFD075D00231807 /* Realm */,
 				B93897B81EF9A01F00231807 /* ClientAPI */,
-				B93897CF1EFAC09800231807 /* Message.swift */,
-				B93897CD1EFAB94300231807 /* TypeMessage.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -227,6 +247,16 @@
 				B93897D21EFAC34B00231807 /* UIColor+ColorSchema.swift */,
 			);
 			name = Helpers;
+			sourceTree = "<group>";
+		};
+		B93897E11EFD075D00231807 /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+				B93897CF1EFAC09800231807 /* Message.swift */,
+				B93897CD1EFAB94300231807 /* TypeMessage.swift */,
+				B93897E21EFD077000231807 /* RealmHelper.swift */,
+			);
+			name = Realm;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -337,14 +367,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				B93897D31EFAC34B00231807 /* UIColor+ColorSchema.swift in Sources */,
+				B93897E31EFD077000231807 /* RealmHelper.swift in Sources */,
 				B938978D1EF99E7C00231807 /* AppDelegate.swift in Sources */,
 				B93897D61EFAD80500231807 /* MessageLabel.swift in Sources */,
+				B93897E51EFD14F300231807 /* MessageUserTableViewCell.swift in Sources */,
 				B93897CE1EFAB94300231807 /* TypeMessage.swift in Sources */,
 				B93897BA1EF9A03E00231807 /* ClientAPI.swift in Sources */,
 				B93897CB1EFAB68100231807 /* BotViewController.swift in Sources */,
 				B93897C21EFA5C4400231807 /* Translate.swift in Sources */,
 				B93897D01EFAC09800231807 /* Message.swift in Sources */,
-				B93897C81EFAB63C00231807 /* MessageTableViewCell.swift in Sources */,
+				B93897C81EFAB63C00231807 /* MessageBotTableViewCell.swift in Sources */,
 				B93897C41EFA69EC00231807 /* ResponseCode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

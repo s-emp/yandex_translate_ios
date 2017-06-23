@@ -32,36 +32,41 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w1a-f2-Tdb">
-                                                        <rect key="frame" x="218.5" y="32" width="148.5" height="30"/>
+                                                        <rect key="frame" x="210.5" y="32" width="156.5" height="30"/>
                                                         <state key="normal" title="Английский">
                                                             <color key="titleColor" red="0.18823529411764706" green="0.5490196078431373" blue="0.5490196078431373" alpha="1" colorSpace="calibratedRGB"/>
                                                         </state>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KKx-YH-DaH">
-                                                        <rect key="frame" x="8" y="32" width="148.5" height="30"/>
+                                                        <rect key="frame" x="8" y="32" width="156.5" height="30"/>
                                                         <state key="normal" title="Русский">
                                                             <color key="titleColor" red="0.18823529411764706" green="0.5490196078431373" blue="0.5490196078431373" alpha="1" colorSpace="calibratedRGB"/>
                                                         </state>
                                                     </button>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="switchLang" translatesAutoresizingMaskIntoConstraints="NO" id="MdF-CT-Vcn">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YSu-bb-0Zl">
                                                         <rect key="frame" x="172.5" y="32" width="30" height="30"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="30" id="2jE-jn-y7Y"/>
-                                                            <constraint firstAttribute="width" constant="30" id="waP-1G-eSC"/>
+                                                            <constraint firstAttribute="width" constant="30" id="8Jp-f2-2jT"/>
+                                                            <constraint firstAttribute="height" constant="30" id="UkL-CZ-vma"/>
                                                         </constraints>
-                                                    </imageView>
+                                                        <state key="normal" image="switchLang"/>
+                                                        <connections>
+                                                            <action selector="touchSwitchMessage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vKH-54-CmC"/>
+                                                        </connections>
+                                                    </button>
                                                 </subviews>
                                                 <color key="backgroundColor" red="0.16078431372549018" green="0.1803921568627451" blue="0.20392156862745098" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstItem="KKx-YH-DaH" firstAttribute="top" secondItem="MdC-Hq-y8O" secondAttribute="top" constant="32" id="5Zn-iA-HvW"/>
                                                     <constraint firstItem="w1a-f2-Tdb" firstAttribute="top" secondItem="MdC-Hq-y8O" secondAttribute="top" constant="32" id="EkI-er-xN2"/>
                                                     <constraint firstItem="KKx-YH-DaH" firstAttribute="leading" secondItem="MdC-Hq-y8O" secondAttribute="leading" constant="8" id="FfH-Rx-9f5"/>
-                                                    <constraint firstItem="MdF-CT-Vcn" firstAttribute="top" secondItem="MdC-Hq-y8O" secondAttribute="top" constant="32" id="KZA-kU-EV3"/>
                                                     <constraint firstAttribute="height" constant="70" id="SSP-hc-H0N"/>
-                                                    <constraint firstItem="w1a-f2-Tdb" firstAttribute="leading" secondItem="MdF-CT-Vcn" secondAttribute="trailing" constant="16" id="a77-Kj-Z8R"/>
                                                     <constraint firstItem="w1a-f2-Tdb" firstAttribute="width" secondItem="KKx-YH-DaH" secondAttribute="width" id="axf-Wc-v0G"/>
-                                                    <constraint firstItem="MdF-CT-Vcn" firstAttribute="leading" secondItem="KKx-YH-DaH" secondAttribute="trailing" constant="15.5" id="fUi-EU-610"/>
+                                                    <constraint firstAttribute="bottom" secondItem="YSu-bb-0Zl" secondAttribute="bottom" constant="8" id="cbs-bd-9mw"/>
+                                                    <constraint firstItem="YSu-bb-0Zl" firstAttribute="top" secondItem="MdC-Hq-y8O" secondAttribute="top" constant="32" id="fCx-Lq-JSW"/>
+                                                    <constraint firstItem="w1a-f2-Tdb" firstAttribute="leading" secondItem="YSu-bb-0Zl" secondAttribute="trailing" constant="8" id="gT3-u7-qPM"/>
                                                     <constraint firstAttribute="trailing" secondItem="w1a-f2-Tdb" secondAttribute="trailing" constant="8.5" id="ly1-rJ-TrT"/>
+                                                    <constraint firstItem="YSu-bb-0Zl" firstAttribute="leading" secondItem="KKx-YH-DaH" secondAttribute="trailing" constant="8" id="yak-vM-vSo"/>
                                                 </constraints>
                                             </view>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="37" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="iG2-1A-dPd">
@@ -69,7 +74,7 @@
                                                 <color key="backgroundColor" red="0.12549019610000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 <color key="sectionIndexBackgroundColor" red="0.12549019610000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 <prototypes>
-                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="message" rowHeight="36" id="dSm-T1-LKM" customClass="MessageTableViewCell" customModule="tBot" customModuleProvider="target">
+                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="messageBot" rowHeight="36" id="dSm-T1-LKM" customClass="MessageBotTableViewCell" customModule="tBot" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="28" width="375" height="36"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dSm-T1-LKM" id="bIH-xB-ZGU">
@@ -94,7 +99,7 @@
                                                                             <real key="value" value="3"/>
                                                                         </userDefinedRuntimeAttribute>
                                                                         <userDefinedRuntimeAttribute type="number" keyPath="leftInset">
-                                                                            <real key="value" value="16"/>
+                                                                            <real key="value" value="6"/>
                                                                         </userDefinedRuntimeAttribute>
                                                                         <userDefinedRuntimeAttribute type="number" keyPath="bottomInset">
                                                                             <real key="value" value="3"/>
@@ -103,7 +108,7 @@
                                                                             <real key="value" value="6"/>
                                                                         </userDefinedRuntimeAttribute>
                                                                         <userDefinedRuntimeAttribute type="number" keyPath="borderRadius">
-                                                                            <real key="value" value="8"/>
+                                                                            <real key="value" value="7"/>
                                                                         </userDefinedRuntimeAttribute>
                                                                     </userDefinedRuntimeAttributes>
                                                                 </label>
@@ -123,6 +128,50 @@
                                                             <outlet property="messageBot" destination="WFu-ob-jpX" id="hKc-Sr-Vjg"/>
                                                         </connections>
                                                     </tableViewCell>
+                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="messageUser" id="XqO-07-myM" customClass="MessageUserTableViewCell" customModule="tBot" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="64" width="375" height="37"/>
+                                                        <autoresizingMask key="autoresizingMask"/>
+                                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XqO-07-myM" id="vpC-Ju-dVS">
+                                                            <rect key="frame" x="0.0" y="0.0" width="375" height="37"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Привет! Меня зовут TBot! Я занимаюсь переводами и помогаю тебе запоминать новые слова!" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fza-ls-6Ip" customClass="MessageLabel" customModule="tBot" customModuleProvider="target">
+                                                                    <rect key="frame" x="108" y="8" width="259" height="20"/>
+                                                                    <color key="backgroundColor" red="0.16078431369999999" green="0.18039215689999999" blue="0.20392156859999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="topInset">
+                                                                            <real key="value" value="3"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="leftInset">
+                                                                            <real key="value" value="6"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="bottomInset">
+                                                                            <real key="value" value="3"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="rightInset">
+                                                                            <real key="value" value="6"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="borderRadius">
+                                                                            <real key="value" value="7"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                    </userDefinedRuntimeAttributes>
+                                                                </label>
+                                                            </subviews>
+                                                            <constraints>
+                                                                <constraint firstItem="Fza-ls-6Ip" firstAttribute="top" secondItem="vpC-Ju-dVS" secondAttribute="topMargin" id="9pA-i0-qM8"/>
+                                                                <constraint firstItem="Fza-ls-6Ip" firstAttribute="trailing" secondItem="vpC-Ju-dVS" secondAttribute="trailingMargin" id="lqE-JA-Ako"/>
+                                                                <constraint firstItem="Fza-ls-6Ip" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="vpC-Ju-dVS" secondAttribute="leadingMargin" constant="100" id="vEn-ux-hin"/>
+                                                                <constraint firstAttribute="bottomMargin" secondItem="Fza-ls-6Ip" secondAttribute="bottom" constant="1" id="vKz-fL-UtG"/>
+                                                            </constraints>
+                                                        </tableViewCellContentView>
+                                                        <color key="backgroundColor" red="0.12549019610000001" green="0.13725490200000001" blue="0.15686274510000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <connections>
+                                                            <outlet property="messageUI" destination="Fza-ls-6Ip" id="c9Y-6n-DRa"/>
+                                                        </connections>
+                                                    </tableViewCell>
                                                 </prototypes>
                                             </tableView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2cm-zC-ZoI">
@@ -135,24 +184,28 @@
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5Jc-XZ-z9k">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="op9-GK-lur">
                                                         <rect key="frame" x="337" y="9" width="30" height="30"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="30" id="VNd-Dv-R1a"/>
-                                                            <constraint firstAttribute="width" constant="30" id="q0x-w0-rlL"/>
+                                                            <constraint firstAttribute="width" constant="30" id="Trd-Sg-ctV"/>
+                                                            <constraint firstAttribute="height" constant="30" id="ztV-NB-TdL"/>
                                                         </constraints>
-                                                    </imageView>
+                                                        <state key="normal" image="send"/>
+                                                        <connections>
+                                                            <action selector="touchSendMessage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="BLt-Pv-TyC"/>
+                                                        </connections>
+                                                    </button>
                                                 </subviews>
                                                 <color key="backgroundColor" red="0.16078431369999999" green="0.18039215689999999" blue="0.20392156859999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="trailing" secondItem="5Jc-XZ-z9k" secondAttribute="trailing" constant="8" id="8bU-ga-cKl"/>
-                                                    <constraint firstItem="5Jc-XZ-z9k" firstAttribute="top" secondItem="2cm-zC-ZoI" secondAttribute="top" constant="9" id="UPR-1g-dvL"/>
+                                                    <constraint firstItem="op9-GK-lur" firstAttribute="leading" secondItem="ICt-Rw-6bd" secondAttribute="trailing" constant="8" id="6Yq-rr-ELF"/>
+                                                    <constraint firstAttribute="trailing" secondItem="op9-GK-lur" secondAttribute="trailing" constant="8" id="9fK-bb-lHv"/>
+                                                    <constraint firstItem="op9-GK-lur" firstAttribute="top" secondItem="2cm-zC-ZoI" secondAttribute="top" constant="9" id="DKV-9u-6GB"/>
                                                     <constraint firstAttribute="bottom" secondItem="ICt-Rw-6bd" secondAttribute="bottom" constant="8" id="WYo-sA-OEL"/>
-                                                    <constraint firstAttribute="bottom" secondItem="5Jc-XZ-z9k" secondAttribute="bottom" constant="8" id="YVz-sH-bJy"/>
                                                     <constraint firstItem="ICt-Rw-6bd" firstAttribute="top" secondItem="2cm-zC-ZoI" secondAttribute="top" constant="9" id="chd-XG-2T7"/>
+                                                    <constraint firstAttribute="bottom" secondItem="op9-GK-lur" secondAttribute="bottom" constant="8" id="klh-MX-d2u"/>
                                                     <constraint firstItem="ICt-Rw-6bd" firstAttribute="leading" secondItem="2cm-zC-ZoI" secondAttribute="leading" constant="8" id="lgP-UC-tCh"/>
                                                     <constraint firstAttribute="height" constant="47" id="lz9-yF-TR7"/>
-                                                    <constraint firstItem="5Jc-XZ-z9k" firstAttribute="leading" secondItem="ICt-Rw-6bd" secondAttribute="trailing" constant="8" id="yJ0-sY-caJ"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
@@ -194,7 +247,6 @@
                         <outlet property="fromLang" destination="KKx-YH-DaH" id="QWv-aV-tUL"/>
                         <outlet property="historyMessage" destination="iG2-1A-dPd" id="51P-xv-zxq"/>
                         <outlet property="message" destination="ICt-Rw-6bd" id="Lu0-v7-PSE"/>
-                        <outlet property="put" destination="5Jc-XZ-z9k" id="6MD-kZ-kN4"/>
                         <outlet property="scroll" destination="PC6-lW-fGI" id="mrR-Ac-VS0"/>
                         <outlet property="toLang" destination="w1a-f2-Tdb" id="uUX-k2-VoP"/>
                     </connections>
@@ -206,6 +258,7 @@
     </scenes>
     <resources>
         <image name="r2" width="57" height="30"/>
+        <image name="send" width="30" height="30"/>
         <image name="switchLang" width="30" height="30"/>
     </resources>
 </document>

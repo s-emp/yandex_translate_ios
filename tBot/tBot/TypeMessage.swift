@@ -1,3 +1,3 @@
-enum TypeMessage {
-    case bot, user, info
+enum TypeMessage: Int {
+    case bot = 0, user, info
 }

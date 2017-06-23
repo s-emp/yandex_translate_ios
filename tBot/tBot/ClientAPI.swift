@@ -3,7 +3,7 @@ import SwiftHTTP
 import SwiftyJSON
 
 class ClientAPI {
-    typealias ResponseTranslate = (ResponseCode, Tranlsate?)
+    typealias ResponseTranslate = (code: ResponseCode, translate: Tranlsate?)
     typealias ResponseGetListLang = (ResponseCode, [String:String]?)
     
     private let APIKey = "trnsl.1.1.20170411T084541Z.7d7dcebbee0cae59.2dfcbbe761fa05823160d774ccc226a3b2b68fd0"

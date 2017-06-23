@@ -6,11 +6,6 @@ import UIKit
     @IBInspectable var leftInset: CGFloat = 0.0
     @IBInspectable var bottomInset: CGFloat = 0.0
     @IBInspectable var rightInset: CGFloat = 0.0
-    @IBInspectable var borderRadius: CGFloat = 0.0 {
-        didSet {
-            self.layer.cornerRadius = borderRadius
-        }
-    }
     
     var insets: UIEdgeInsets {
         get {

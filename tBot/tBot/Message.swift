@@ -1,9 +1,10 @@
-class Message {
-    var typeMessage: TypeMessage
-    var text: String
+import Foundation
+import RealmSwift
+
+class Message: Object {
     
-    init(typeMessage: TypeMessage = .user, text: String) {
-        self.typeMessage = typeMessage
-        self.text = text
-    }
+    dynamic var event = NSDate()
+    dynamic var text = ""
+    dynamic var typeMessage = 0
+    
 }

@@ -1,9 +1,12 @@
 import UIKit
 import SwiftyBeaver
+import RealmSwift
 
+// Логирование
 let log = SwiftyBeaver.self
 let console = ConsoleDestination()
 let file = FileDestination()
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

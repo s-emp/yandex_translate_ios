@@ -7,6 +7,7 @@
 //
 
 import XCTest
+
 @testable import tBot
 
 class tBotTests: XCTestCase {
