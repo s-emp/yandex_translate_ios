@@ -92,4 +92,10 @@ class ClientAPI {
             callback(ResponseGetListLang(ResponseCode.noConnect, nil))
         }
     }
+    
+    func switchLang() {
+        let lang = toLang
+        toLang = fromLang
+        fromLang = lang
+    }
 }
