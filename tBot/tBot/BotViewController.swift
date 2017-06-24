@@ -1,7 +1,7 @@
 import UIKit
 import RealmSwift
 
-class BotViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
+class BotViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource, InputController {
     
     @IBOutlet weak var botMainView: NSLayoutConstraint!
     @IBOutlet weak var mainView: UIView!
@@ -28,8 +28,12 @@ class BotViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     var listLang: [Lang] = []
     
     
+    var bot: OutputController!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        bot = Bot(self)
         
         effectViewLang.layer.cornerRadius = 25
         viewLang.layer.cornerRadius = 25
@@ -76,7 +80,6 @@ class BotViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     
     //MARK: TableView
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        log.debug("Cell count: \(history.count)")
         return history.count
     }
     
@@ -93,7 +96,10 @@ class BotViewController: UIViewController, UITableViewDelegate, UITableViewDataS
                 return cell
             }
         case TypeMessage.info.rawValue:
-            fatalError("Не реализован switch на тип info cell")
+            if let cell = tableView.dequeueReusableCell(withIdentifier: "messageInfo") as? MessageInfoTableViewCell {
+                cell.message = history[indexPath.row]
+                return cell
+            }
         default:
             log.error("Получино необрабатываемое значение ячейки")
         }
@@ -102,32 +108,7 @@ class BotViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let favorit = UITableViewRowAction(style: .default, title: "Изб.") { action, index in
-            let result = UIAlertController(title: nil, message: nil, preferredStyle: .alert)
-            if let cell = tableView.cellForRow(at: indexPath) as? MessageBotTableViewCell {
-                let fav = Favorit()
-                fav.source = self.history[indexPath.row - 1]
-                fav.translate = cell.message!
-                result.title = "Избранное"
-                result.message = "Успешно добавлено!"
-                RealmHelper.add(fav)
-            } else if let cell = tableView.cellForRow(at: indexPath) as? MessageUserTableViewCell {
-                let fav = Favorit()
-                fav.source = cell.message!
-                fav.translate = self.history[indexPath.row + 1]
-                result.title = "Избранное"
-                result.message = "Успешно добавлено!"
-                RealmHelper.add(fav)
-            } else {
-                result.title = "Ошибка"
-                result.message = "В избранное можно добавлять только перевод!"
-            }
-            self.present(result, animated: true)
-            
-            let when = DispatchTime.now() + 1.5
-            DispatchQueue.main.asyncAfter(deadline: when){
-                // your code with delay
-                result.dismiss(animated: true, completion: nil)
-            }
+            self.bot.ask("\(KeyWord.favorites.rawValue) \(index.row)")
         }
         favorit.backgroundColor = UIColor.csDarkElement
         return [favorit]
@@ -169,28 +150,8 @@ class BotViewController: UIViewController, UITableViewDelegate, UITableViewDataS
             return
         }
         indicatorLoading.isHidden = false
-        let messageSend = Message()
-        messageSend.event = NSDate()
-        messageSend.text = message.text!.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
-        messageSend.typeMessage = TypeMessage.user.rawValue
+        bot.ask(message.text!)
         message.text = ""
-        yandex.translate(text: messageSend.text) { response in
-            switch response.code {
-            case .success:
-                let translate = Message()
-                translate.event = NSDate()
-                translate.typeMessage = TypeMessage.bot.rawValue
-                translate.text = response.translate!.translate
-                self.history.append(messageSend)
-                self.history.append(translate)
-                self.updateUI()
-                RealmHelper.add(messageSend)
-                RealmHelper.add(translate)
-            default:
-                break
-            }
-        }
-        
     }
     
     @IBAction func touchSwitchMessage(_ sender: UIButton) {
@@ -276,6 +237,30 @@ class BotViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         } else {
             log.error("Ошибка tag у pickedView: \(pickerView.tag)")
         }
+    }
+    
+    //MARK: Protocol InputController
+    func add(messages: [Message]) {
+        for responseBot in messages {
+            history.append(responseBot)
+        }
+        updateUI()
+    }
+    
+    func ask(_ text: String) {
+        let newMessage = Message()
+        newMessage.event = NSDate()
+        newMessage.typeMessage = TypeMessage.info.rawValue
+        newMessage.text = text
+        history.append(newMessage)
+        updateUI()
+    }
+    
+    func getMessage(index: Int) -> Message? {
+        guard history.count > index && index >= 0 else {
+            return nil
+        }
+        return history[index]
     }
     
 }

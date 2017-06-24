@@ -40,6 +40,10 @@
 		B93897E51EFD14F300231807 /* MessageUserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93897E41EFD14F300231807 /* MessageUserTableViewCell.swift */; };
 		B93897E81EFD418100231807 /* Realm.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = B93897D91EFBD5ED00231807 /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B93897E91EFD418100231807 /* RealmSwift.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = B93897DA1EFBD5ED00231807 /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B9BFE25A1EFE89B20094AEE8 /* Bot.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BFE2591EFE89B20094AEE8 /* Bot.swift */; };
+		B9BFE25C1EFE8DD50094AEE8 /* InputOutputProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BFE25B1EFE8DD50094AEE8 /* InputOutputProtocols.swift */; };
+		B9BFE2601EFE97620094AEE8 /* MessageInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BFE25F1EFE97620094AEE8 /* MessageInfoTableViewCell.swift */; };
+		B9BFE2631EFE9B780094AEE8 /* KeyWord.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BFE2621EFE9B780094AEE8 /* KeyWord.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -111,6 +115,10 @@
 		B93897DA1EFBD5ED00231807 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
 		B93897E21EFD077000231807 /* RealmHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmHelper.swift; sourceTree = "<group>"; };
 		B93897E41EFD14F300231807 /* MessageUserTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageUserTableViewCell.swift; sourceTree = "<group>"; };
+		B9BFE2591EFE89B20094AEE8 /* Bot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bot.swift; sourceTree = "<group>"; };
+		B9BFE25B1EFE8DD50094AEE8 /* InputOutputProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputOutputProtocols.swift; sourceTree = "<group>"; };
+		B9BFE25F1EFE97620094AEE8 /* MessageInfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageInfoTableViewCell.swift; sourceTree = "<group>"; };
+		B9BFE2621EFE9B780094AEE8 /* KeyWord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyWord.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,6 +181,8 @@
 				B93897C91EFAB64100231807 /* Views */,
 				B93897CC1EFAB68800231807 /* Controllers */,
 				B93897D41EFAC35000231807 /* Helpers */,
+				B9BFE2591EFE89B20094AEE8 /* Bot.swift */,
+				B9BFE25B1EFE8DD50094AEE8 /* InputOutputProtocols.swift */,
 			);
 			path = tBot;
 			sourceTree = "<group>";
@@ -231,6 +241,7 @@
 		B93897C91EFAB64100231807 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B9BFE25F1EFE97620094AEE8 /* MessageInfoTableViewCell.swift */,
 				B93897E41EFD14F300231807 /* MessageUserTableViewCell.swift */,
 				B93897C71EFAB63C00231807 /* MessageBotTableViewCell.swift */,
 				B93897D51EFAD80500231807 /* MessageLabel.swift */,
@@ -251,6 +262,7 @@
 			children = (
 				B93897E11EFD075D00231807 /* Realm */,
 				B93897B81EF9A01F00231807 /* ClientAPI */,
+				B9BFE2621EFE9B780094AEE8 /* KeyWord.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -381,6 +393,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B93897D31EFAC34B00231807 /* UIColor+ColorSchema.swift in Sources */,
+				B9BFE2631EFE9B780094AEE8 /* KeyWord.swift in Sources */,
 				B93897E31EFD077000231807 /* RealmHelper.swift in Sources */,
 				B938978D1EF99E7C00231807 /* AppDelegate.swift in Sources */,
 				B91BFC191EFD509C00E80B11 /* Lang.swift in Sources */,
@@ -389,11 +402,14 @@
 				B93897CE1EFAB94300231807 /* TypeMessage.swift in Sources */,
 				B93897BA1EF9A03E00231807 /* ClientAPI.swift in Sources */,
 				B93897CB1EFAB68100231807 /* BotViewController.swift in Sources */,
+				B9BFE25A1EFE89B20094AEE8 /* Bot.swift in Sources */,
 				B93897C21EFA5C4400231807 /* Translate.swift in Sources */,
+				B9BFE25C1EFE8DD50094AEE8 /* InputOutputProtocols.swift in Sources */,
 				B93897D01EFAC09800231807 /* Message.swift in Sources */,
 				B91BFC1D1EFD630300E80B11 /* Favorit.swift in Sources */,
 				B93897C81EFAB63C00231807 /* MessageBotTableViewCell.swift in Sources */,
 				B93897C41EFA69EC00231807 /* ResponseCode.swift in Sources */,
+				B9BFE2601EFE97620094AEE8 /* MessageInfoTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
