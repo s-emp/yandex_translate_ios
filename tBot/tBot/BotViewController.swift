@@ -18,20 +18,13 @@ class BotViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     @IBOutlet weak var changingLang: UILabel!
     @IBOutlet weak var listLangs: UIPickerView!
     
-    var pickedFromLang = 0
-    var pickedToLang = 0
-    
     var alert: UIAlertController!
-    var realmHistory: Results<Message>!
-    var yandex: ClientAPI!
-    var history: [Message] = []
-    var listLang: [Lang] = []
-    
     
     var bot: OutputController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        log.debug("Первоначальная настройка")
         
         bot = Bot(self)
         
@@ -47,30 +40,18 @@ class BotViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         
         indicatorLoading.color = UIColor.csDarkElement
         indicatorLoading.isHidden = false
-        yandex = ClientAPI()
-        yandex.getListLang() { response in
-            switch response.code {
-            case .success:
-                self.listLang = response.list!.sorted() { return $0.name < $1.name ? true : false }
-                for (index, lang) in self.listLang.enumerated() {
-                    if lang.name == self.fromLang.title(for: .normal) {
-                        self.pickedFromLang = index
-                    }
-                    if lang.name == self.toLang.title(for: .normal) {
-                        self.pickedToLang = index
-                    }
-                }
-            default:
-                log.error("Не реализованная ветка событий")
-            }
-        }
         log.debug("Realm path: \(Realm.Configuration.defaultConfiguration.fileURL!)")
         message.delegate = self
         historyMessage.delegate = self
         historyMessage.dataSource = self
         historyMessage.rowHeight = UITableViewAutomaticDimension
         historyMessage.estimatedRowHeight = 36
-        readHistoryAndUpdateUI()
+        log.debug("Первоначальная настройка завершена")
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        scrollToBottom()
+        indicatorLoading.isHidden = true
     }
     
     deinit {
@@ -80,24 +61,24 @@ class BotViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     
     //MARK: TableView
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return history.count
+        return bot.getHistory().count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch history[indexPath.row].typeMessage {
+        switch bot.getHistory()[indexPath.row].typeMessage {
         case TypeMessage.bot.rawValue:
             if let cell = tableView.dequeueReusableCell(withIdentifier: "messageBot") as? MessageBotTableViewCell {
-                cell.message = history[indexPath.row]
+                cell.message = bot.getHistory()[indexPath.row]
                 return cell
             }
         case TypeMessage.user.rawValue:
             if let cell = tableView.dequeueReusableCell(withIdentifier: "messageUser") as? MessageUserTableViewCell {
-                cell.message = history[indexPath.row]
+                cell.message = bot.getHistory()[indexPath.row]
                 return cell
             }
         case TypeMessage.info.rawValue:
             if let cell = tableView.dequeueReusableCell(withIdentifier: "messageInfo") as? MessageInfoTableViewCell {
-                cell.message = history[indexPath.row]
+                cell.message = bot.getHistory()[indexPath.row]
                 return cell
             }
         default:
@@ -115,31 +96,9 @@ class BotViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     }
     
     //MARK: Update UI
-    func readHistoryAndUpdateUI() {
-        readHistory()
-        updateUI()
-    }
-    
-    func readHistory() {
-        realmHistory = RealmHelper.loadHistory()
-        history = []
-        for hist in realmHistory {
-            history.append(hist)
-        }
-    }
-    
-    func updateUI() {
-        DispatchQueue.main.async {
-            self.historyMessage.setEditing(false, animated: true)
-            self.historyMessage.reloadData()
-            self.scrollToBottom()
-            self.indicatorLoading.isHidden = true
-        }
-    }
-    
     func scrollToBottom(){
-        if (history.count-1 >= 0) {
-            let indexPath = IndexPath(row: self.history.count-1, section: 0)
+        if (bot.getHistory().count-1 >= 0) {
+            let indexPath = IndexPath(row: self.bot.getHistory().count-1, section: 0)
             self.historyMessage.scrollToRow(at: indexPath, at: .bottom, animated: false)
         }
     }
@@ -150,6 +109,7 @@ class BotViewController: UIViewController, UITableViewDelegate, UITableViewDataS
             return
         }
         indicatorLoading.isHidden = false
+        message.isEnabled = false
         bot.ask(message.text!)
         message.text = ""
     }
@@ -158,7 +118,7 @@ class BotViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         let lang = fromLang.title(for: .normal)
         fromLang.setTitle(toLang.title(for: .normal), for: .normal)
         toLang.setTitle(lang, for: .normal)
-        yandex.switchLang()
+        bot.ask(KeyWord.switchLang.rawValue)
     }
     
     @IBAction func touchLang(_ sender: UIButton) {
@@ -168,21 +128,17 @@ class BotViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         effectViewLang.isHidden = false
         listLangs.reloadAllComponents()
         if sender.tag == 1 {
-            listLangs.selectRow(pickedFromLang, inComponent: 0, animated: false)
+            listLangs.selectRow(bot.getPickedFromLang(), inComponent: 0, animated: false)
             listLangs.tag = 1
             changingLang.text = "Выберите язык с которого переводим"
         } else {
-            listLangs.selectRow(pickedToLang, inComponent: 0, animated: false)
+            listLangs.selectRow(bot.getPickedToLang(), inComponent: 0, animated: false)
             listLangs.tag = 2
             changingLang.text = "Выберите язык на который переводим"
         }
     }
     
     @IBAction func touchChangeLang(_ sender: UIButton) {
-        yandex.fromLang = listLang[pickedFromLang].code
-        yandex.toLang = listLang[pickedToLang].code
-        fromLang.setTitle(listLang[pickedFromLang].name, for: .normal)
-        toLang.setTitle(listLang[pickedToLang].name, for: .normal)
         effectViewLang.isHidden = true
     }
     
@@ -221,46 +177,32 @@ class BotViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return listLang[row].name
+        return bot.getListLangs()[row].name
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return listLang.count
+        return bot.getListLangs().count
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        log.debug("Picked: \(listLang[row].name)")
+        log.debug("Picked: \(bot.getListLangs()[row].name)")
         if pickerView.tag == 1 {
-            pickedFromLang = row
+            bot.ask("\(KeyWord.fromLanguage.rawValue) \(bot.getListLangs()[row].name)")
         } else if pickerView.tag == 2 {
-            pickedToLang = row
+            bot.ask("\(KeyWord.toLanguage.rawValue) \(bot.getListLangs()[row].name)")
         } else {
             log.error("Ошибка tag у pickedView: \(pickerView.tag)")
         }
     }
     
     //MARK: Protocol InputController
-    func add(messages: [Message]) {
-        for responseBot in messages {
-            history.append(responseBot)
+    func updateUI() {
+        DispatchQueue.main.async {
+            self.historyMessage.setEditing(false, animated: true)
+            self.historyMessage.reloadData()
+            self.scrollToBottom()
+            self.message.isEnabled = true
+            self.indicatorLoading.isHidden = true
         }
-        updateUI()
     }
-    
-    func ask(_ text: String) {
-        let newMessage = Message()
-        newMessage.event = NSDate()
-        newMessage.typeMessage = TypeMessage.info.rawValue
-        newMessage.text = text
-        history.append(newMessage)
-        updateUI()
-    }
-    
-    func getMessage(index: Int) -> Message? {
-        guard history.count > index && index >= 0 else {
-            return nil
-        }
-        return history[index]
-    }
-    
 }

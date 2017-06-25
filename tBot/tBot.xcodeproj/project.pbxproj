@@ -183,6 +183,7 @@
 				B93897D41EFAC35000231807 /* Helpers */,
 				B9BFE2591EFE89B20094AEE8 /* Bot.swift */,
 				B9BFE25B1EFE8DD50094AEE8 /* InputOutputProtocols.swift */,
+				B9BFE2621EFE9B780094AEE8 /* KeyWord.swift */,
 			);
 			path = tBot;
 			sourceTree = "<group>";
@@ -262,7 +263,6 @@
 			children = (
 				B93897E11EFD075D00231807 /* Realm */,
 				B93897B81EF9A01F00231807 /* ClientAPI */,
-				B9BFE2621EFE9B780094AEE8 /* KeyWord.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
